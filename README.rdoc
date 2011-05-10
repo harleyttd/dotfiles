@@ -1,21 +1,22 @@
-= Ryan Bates Dot Files
+Using ryanb/dotfiles AND akitaonrails/vimfiles with some customizations.
 
 These are config files to set up a system the way I like it.
 
-
 == Installation
 
-  git clone git://github.com/ryanb/dotfiles ~/.dotfiles
+  git clone git://github.com/harleyttd/dotfiles ~/.dotfiles
+  git submodule update --recursive
   cd ~/.dotfiles
   rake install
 
 
 == Environment
 
-I am running on Mac OS X, but it will likely work on Linux as well with 
-minor fiddling. I primarily use zsh, but this includes some older bash 
-files as well. If you would like to switch to zsh, you can do so with 
-the following command.
+I am using the bash shell and running on Mac OS X, but it will likely 
+work on Linux as well with minor fiddling. 
+
+If you would like to switch to zsh, you should checkout the original
+ryanb/dotfiles repo or use the following command:
 
   chsh -s /bin/zsh
 
