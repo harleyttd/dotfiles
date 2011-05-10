@@ -1,9 +1,10 @@
 #!/usr/bin/ruby
 
 begin
-  require 'hirb' # sudo gem install cldwalker-hirb --source http://gems.github.com
+  require 'hirb'
   Hirb.enable
 rescue LoadError
+  puts "Warning: Gem hirb not found."
 end
 
 def change_log(stream)
@@ -18,3 +19,8 @@ end
 def hide_log
   change_log(nil)
 end
+
+# show log as default. can't call show_log yet because ActiveRecord has not been loaded
+require 'logger'
+Object.const_set(:RAILS_DEFAULT_LOGGER, Logger.new(STDOUT))
+
