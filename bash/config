@@ -43,5 +43,5 @@ function parse_git_branch {
   [[ $BRANCH ]] && echo "[$BRANCH$(parse_git_dirty)]"
 }
 
-export PS1='\[\033[4m\]\u\[\033[00m\] @\h:\[\033[36m\]\w\[\033[00m\]$(parse_git_branch)   ҈ \t\n$ '
+export PS1='\[\033[4m\]\u\[\033[00m\] @\h:\[\033[36m\]\w\[\033[00m\]$(parse_git_branch)   ҈ ($(rvm-prompt)) \t\n$ '
 
