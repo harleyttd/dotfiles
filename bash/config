@@ -12,8 +12,8 @@ YELLOW='\033[33;01m'
 function minutes_since_last_commit {
   local NOW=`date +%s`
   local LAST_COMMIT=`git log --pretty=format:'%at' -1`
-  local SECONDS_SINCE_LAST_COMMIT=$((now-last_commit))
-  local MINUTES_SINCE_LAST_COMMIT=$((seconds_since_last_commit/60))
+  local SECONDS_SINCE_LAST_COMMIT=$((NOW-LAST_COMMIT))
+  local MINUTES_SINCE_LAST_COMMIT=$((SECONDS_SINCE_LAST_COMMIT/60))
   echo $MINUTES_SINCE_LAST_COMMIT
 }
 
