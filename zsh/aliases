@@ -22,6 +22,7 @@ alias gs='git status'
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG*'
 alias glg='git log'
+alias gba='git branch -a'
 
 # rails
 alias sc='script/console'
@@ -29,7 +30,7 @@ alias sdb='script/dbconsole'
 alias ss='script/server'
 alias sg='script/generate'
 alias a='autotest -rails'
-alias tlog='tail -f log/development.log'
+alias tlog='tail -f -n 100 log/development.log'
 alias scaffold='script/generate nifty_scaffold'
 alias migrate='rake db:migrate db:test:clone'
 alias rst='touch tmp/restart.txt'
