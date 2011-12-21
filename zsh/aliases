@@ -13,7 +13,7 @@ alias la='ls -A'
 # git
 alias gl='git pull'
 alias gp='git push'
-alias gd='git diff'
+alias gd='git diff --ignore-space-at-eol'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gco='git checkout'
