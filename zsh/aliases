@@ -13,7 +13,7 @@ alias la='ls -A'
 # git
 alias gl='git pull'
 alias gp='git push'
-alias gd='git diff --ignore-space-at-eol'
+alias gd='git diff --ignore-space-at-eol' # add --color if you don't have color as default
 alias gc='git commit'
 alias gca='git commit -a'
 alias gco='git checkout'
@@ -24,16 +24,24 @@ alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG
 alias glg='git log'
 alias gba='git branch -a'
 
-# rails
+# rails 3
+alias rs='rails s'
+alias rc='rails c'
+alias rdb='rails db'
+alias rg='rails g'
+
+# rails 2
 alias sc='script/console'
 alias sdb='script/dbconsole'
 alias ss='script/server'
 alias sg='script/generate'
 alias a='autotest -rails'
-alias tlog='tail -f -n 100 log/development.log'
 alias scaffold='script/generate nifty_scaffold'
+
+alias tlog='tail -f -n 100 log/development.log'
 alias migrate='rake db:migrate db:test:clone'
 alias rst='touch tmp/restart.txt'
+alias preass='bundle exec rake RAILS_GROUPS=assets assets:precompile' # useful to verify that assets can actually compile before deployment
 
 # commands starting with % for pasting from web
 alias %=' '
