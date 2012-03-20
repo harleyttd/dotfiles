@@ -1,10 +1,4 @@
-if [[ -n $SSH_CONNECTION ]]; then
-  export PS1='%m:%3~$(git_info_for_prompt)%# '
-else
-  export PS1='%3~$(git_info_for_prompt)%# '
-fi
-
-export EDITOR='mate_wait'
+export EDITOR='vim'
 export PATH="$HOME/bin:$HOME/.bin:/usr/local/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
@@ -17,6 +11,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 REPORTTIME=10 # print elapsed time when more than 10 seconds
 
+setopt NO_BEEP
 setopt NO_BG_NICE # don't nice background tasks
 setopt NO_HUP
 setopt NO_LIST_BEEP
@@ -43,4 +38,49 @@ bindkey '^[[5D' beginning-of-line
 bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
-bindkey '^?' backward-delete-char 
+bindkey '^?' backward-delete-char
+
+
+# Colors
+autoload -U colors
+colors
+setopt prompt_subst
+
+# Save a smiley to a local variable if the last command exited with success.
+local smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
+
+# emacs keybinding in shell (to set back from Vim due to setting EDITOR to vim)
+bindkey -e
+
+# now we can do things like cd ..../dir
+rationalise-dot() {
+  if [[ $LBUFFER = *.. ]]; then
+    LBUFFER+=/..
+  else
+    LBUFFER+=.
+  fi
+}
+zle -N rationalise-dot
+bindkey . rationalise-dot
+
+# C-z also bring forward
+foreground-vi() {
+  fg %vi
+}
+zle -N foreground-vi
+bindkey '^Z' foreground-vi
+
+# C-d exits prompt
+eof-should-logout() {
+  logout
+}
+zle -N eof-should-logout
+bindkey '^D' eof-should-logout
+
+# Show the relative path on one line, then the smiley.
+PROMPT='%~
+${smiley}  %{$reset_color%}'
+
+RPROMPT='%{$fg[cyan]%} $(~/.rvm/bin/rvm-prompt)$(~/bin/git_cwd_info.sh)%{$reset_color%}'
+
+

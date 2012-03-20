@@ -35,7 +35,6 @@ alias sc='script/console'
 alias sdb='script/dbconsole'
 alias ss='script/server'
 alias sg='script/generate'
-alias a='autotest -rails'
 alias scaffold='script/generate nifty_scaffold'
 
 alias tlog='tail -f -n 100 log/development.log'
@@ -45,3 +44,7 @@ alias preass='bundle exec rake RAILS_GROUPS=assets assets:precompile' # useful t
 
 # commands starting with % for pasting from web
 alias %=' '
+
+# zsh
+alias z='vim ~/.zshrc'
+alias zeload='source ~/.zshrc'

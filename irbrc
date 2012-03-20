@@ -7,14 +7,6 @@ IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 
-%w[rubygems looksee wirble].each do |gem|
-  begin
-    require gem
-  rescue LoadError
-    puts "Warning: Gem #{gem} not found."
-  end
-end
-
 class Object
   # list methods which aren't in superclass
   def local_methods(obj = self)
@@ -51,6 +43,3 @@ end
 def paste
   `pbpaste`
 end
-
-# rails 3.2 onwards uses .railsrc so can't use it
-load File.dirname(__FILE__) + '/.old_railsrc' if ($0 == 'irb' && ENV['RAILS_ENV']) || ($0 == 'script/rails' && Rails.env)
